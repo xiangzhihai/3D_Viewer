@@ -227,7 +227,7 @@ public class Image3DUniverse extends DefaultAnimatableUniverse {
 	 */
 	@Override
 	public void show() {
-		init(new ImageWindow3D("ImageJ 3D Viewer", this));
+		init(new ImageWindow3D("CereFlow 3D Viewer", this));
 		win.pack();
 		win.setVisible(true);
 	}
@@ -299,7 +299,7 @@ public class Image3DUniverse extends DefaultAnimatableUniverse {
 		win.dispose();
 		dev.setFullScreenWindow(null);
 
-		win = new ImageWindow3D("ImageJ 3D Viewer", this);
+		win = new ImageWindow3D("CereFlow 3D Viewer", this);
 
 		if (!f) {
 			win.setUndecorated(false);
@@ -881,7 +881,7 @@ public class Image3DUniverse extends DefaultAnimatableUniverse {
 		final int res = Content.getDefaultResamplingFactor(image, type);
 		final int thr = Content.getDefaultThreshold(image, type);
 		return addContent(image, null, image.getTitle(), thr, new boolean[] { true,
-			true, true }, res, type);
+			true, true }, 1, type);
 	}
 
 	/**

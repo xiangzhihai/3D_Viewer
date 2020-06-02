@@ -108,7 +108,7 @@ public class Timeline {
 	}
 
 	private boolean shouldPause = false;
-	private int delay = 200;
+	private int delay = 800;
 
 	/**
 	 * Start animation.
