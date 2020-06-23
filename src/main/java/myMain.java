@@ -52,7 +52,7 @@ public class myMain {
         Image3DUniverse univ = new Image3DUniverse();
         univ.setRotationInterval(0.1f);
         univ.show();
-
+        //late
 
 
         // load the stack in the viewer
