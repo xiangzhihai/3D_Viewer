@@ -24,16 +24,17 @@ public class myMain {
 
     private void run () {
         new ij.ImageJ();
-        String path = "C:\\Users\\Richard\\Desktop\\dcms\\";
+        String path = "C:\\Users\\TransMRI\\Desktop\\dcms\\";
 //        "/Users/zhihaixiang/Documents/GitHub/CereFlow_IJ/icbm_avg_high"
         File f = new File("/Users/zhihaixiang/Desktop/dcms");
 
 
-        int size = 20;
+        int size = 21;
         ImagePlus[] images = new ImagePlus[size];
         int count = 0;
         for (int i = 0; i < size; i++) {
-            String formatted = String.format("%0"+ Integer.toString(4 - i/10) + "d", 0);
+            int num = i == 0 ? 0: (int)Math.floor(java.lang.Math.log10(i));
+            String formatted = String.format("%0"+ Integer.toString(2 - num) + "d", 0);
             String p = path + formatted + Integer.toString(i) + ".dcm";
             ImagePlus ip = IJ.openImage(p);
             new StackConverter(ip).convertToGray8();
