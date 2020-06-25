@@ -24,34 +24,34 @@ public class myMain {
 
     private void run () {
         new ij.ImageJ();
-        String path = "C:\\Users\\TransMRI\\Desktop\\dcms\\";
+        String path = "C:\\TransMRIData\\0050000015\\result\\dicom\\";
 //        "/Users/zhihaixiang/Documents/GitHub/CereFlow_IJ/icbm_avg_high"
         File f = new File("/Users/zhihaixiang/Desktop/dcms");
 
 
-        int size = 21;
-        ImagePlus[] images = new ImagePlus[size];
-        int count = 0;
-        for (int i = 0; i < size; i++) {
-            int num = i == 0 ? 0: (int)Math.floor(java.lang.Math.log10(i));
-            String formatted = String.format("%0"+ Integer.toString(2 - num) + "d", 0);
-            String p = path + formatted + Integer.toString(i) + ".dcm";
-            ImagePlus ip = IJ.openImage(p);
-            new StackConverter(ip).convertToGray8();
-            images[count++] = ip;
-        }
+//        int size = 21;
+//        ImagePlus[] images = new ImagePlus[size];
+//        int count = 0;
+//        for (int i = 0; i < size; i++) {
+//            int num = i == 0 ? 0: (int)Math.floor(java.lang.Math.log10(i));
+//            String formatted = String.format("%0"+ Integer.toString(2 - num) + "d", 0);
+//            String p = path + formatted + Integer.toString(i) + ".dcm";
+//            ImagePlus ip = IJ.openImage(p);
+//            new StackConverter(ip).convertToGray8();
+//            images[count++] = ip;
+//        }
 
-        ImagePlus imp =  (new Concatenator()).concatenate(images, true);
+//        ImagePlus imp =  (new Concatenator()).concatenate(images, true);
 
 
 
 //        Prefs.getImagesURL() + "organ-of-corti.zip"
-//        ImagePlus imp = FolderOpener.open("/Users/zhihaixiang/Desktop/dcms");
-//        new StackConverter(imp).convertToGray8();
-//        imp.show();
+        ImagePlus imp = IJ.openImage("C:\\TransMRIData\\0050000021\\result\\dicom\\ttp.dcm");
+        new StackConverter(imp).convertToGray8();
+        imp.show();
         // Create a universe and show it
         Image3DUniverse univ = new Image3DUniverse();
-        univ.setRotationInterval(0.1f);
+//        univ.setRotationInterval(0.1f);
         univ.show();
         //late
 
@@ -125,9 +125,9 @@ public class myMain {
                 return;
 
             VoltexGroup voltex = (VoltexGroup)c.getContent();
+            int value = voltex.getRenderer().getVolume().getAverage((int)Math.round(p.x), (int)Math.round(p.y), (int)Math.round(p.z))& 0xff;
 
-            System.out.println();
-            IJ.showMessage("Picked " + new Point3f(p) + String.valueOf(voltex.getRenderer().getVolume().getAverage((int)Math.round(p.x), (int)Math.round(p.y), (int)Math.round(p.z))& 0xff));
+            IJ.showMessage("Picked Point: " + new Point3f(p) + " time to peak frame: " + (int)Math.round(value / 15.0));
         }
     }
 }
