@@ -129,7 +129,7 @@ public class Image3DMenubar extends JMenuBar implements ActionListener,
 		univ.addUniverseListener(this);
 
 		fileMenu = createFileMenu();
-		this.add(fileMenu);
+//		this.add(fileMenu);
 
 		editMenu = createEditMenu();
 		this.add(editMenu);
@@ -138,13 +138,13 @@ public class Image3DMenubar extends JMenuBar implements ActionListener,
 		this.add(viewMenu);
 
 		addMenu = createAddMenu();
-		this.add(addMenu);
+//		this.add(addMenu);
 
 		landmarksMenu = createLandmarkMenu();
-		this.add(landmarksMenu);
+//		this.add(landmarksMenu);
 
 		helpMenu = createHelpMenu();
-		this.add(helpMenu);
+//		this.add(helpMenu);
 
 		contentSelected(null);
 	}
@@ -252,7 +252,7 @@ public class Image3DMenubar extends JMenuBar implements ActionListener,
 		edit.add(createDisplayAsSubMenu());
 		// TODO:
 		selectMenu = createSelectMenu();
-		edit.add(selectMenu);
+//		edit.add(selectMenu);
 
 		edit.addSeparator();
 
@@ -301,7 +301,7 @@ public class Image3DMenubar extends JMenuBar implements ActionListener,
 		delete = new JMenuItem("Delete");
 		delete.setEnabled(false);
 		delete.addActionListener(this);
-		edit.add(delete);
+//		edit.add(delete);
 
 		edit.addSeparator();
 
@@ -312,17 +312,17 @@ public class Image3DMenubar extends JMenuBar implements ActionListener,
 		edit.addSeparator();
 
 		transformMenu = createTransformMenu();
-		edit.add(transformMenu);
+//		edit.add(transformMenu);
 
 		edit.addSeparator();
 
 		shortcuts = new JMenuItem("Keyboard shortcuts");
 		shortcuts.addActionListener(this);
-		edit.add(shortcuts);
+//		edit.add(shortcuts);
 
 		viewPreferences = new JMenuItem("View Preferences");
 		viewPreferences.addActionListener(this);
-		edit.add(viewPreferences);
+//		edit.add(viewPreferences);
 
 		return edit;
 	}

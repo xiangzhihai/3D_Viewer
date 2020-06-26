@@ -40,15 +40,15 @@ public class myMain {
 //            new StackConverter(ip).convertToGray8();
 //            images[count++] = ip;
 //        }
-
+//
 //        ImagePlus imp =  (new Concatenator()).concatenate(images, true);
 
 
 
 //        Prefs.getImagesURL() + "organ-of-corti.zip"
-        ImagePlus imp = IJ.openImage("C:\\TransMRIData\\0050000021\\result\\dicom\\ttp.dcm");
+        ImagePlus imp = IJ.openImage("C:\\TransMRIData\\0050000021\\result\\dicom\\001.dcm");
         new StackConverter(imp).convertToGray8();
-        imp.show();
+//        imp.show();
         // Create a universe and show it
         Image3DUniverse univ = new Image3DUniverse();
 //        univ.setRotationInterval(0.1f);
