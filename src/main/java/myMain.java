@@ -1,8 +1,8 @@
 import ij.IJ;
 import ij.ImagePlus;
 import ij.Prefs;
+import ij.io.FileSaver;
 import ij.plugin.Concatenator;
-import ij.plugin.FolderOpener;
 import ij.process.StackConverter;
 import ij3d.Content;
 import ij3d.Image3DUniverse;
@@ -23,31 +23,31 @@ public class myMain {
     }
 
     private void run () {
-        new ij.ImageJ();
-        String path = "C:\\TransMRIData\\0050000015\\result\\dicom\\";
+//        new ij.ImageJ();
+        String path = "C:\\Users\\TransMRI\\Desktop\\AVM_case2_01res\\dicom\\";
 //        "/Users/zhihaixiang/Documents/GitHub/CereFlow_IJ/icbm_avg_high"
         File f = new File("/Users/zhihaixiang/Desktop/dcms");
 
 
-//        int size = 21;
-//        ImagePlus[] images = new ImagePlus[size];
-//        int count = 0;
-//        for (int i = 0; i < size; i++) {
-//            int num = i == 0 ? 0: (int)Math.floor(java.lang.Math.log10(i));
-//            String formatted = String.format("%0"+ Integer.toString(2 - num) + "d", 0);
-//            String p = path + formatted + Integer.toString(i) + ".dcm";
-//            ImagePlus ip = IJ.openImage(p);
-//            new StackConverter(ip).convertToGray8();
-//            images[count++] = ip;
-//        }
-//
-//        ImagePlus imp =  (new Concatenator()).concatenate(images, true);
+        int size = 21;
+        ImagePlus[] images = new ImagePlus[size];
+        int count = 0;
+        for (int i = 0; i < size; i++) {
+            int num = i == 0 ? 0: (int)Math.floor(java.lang.Math.log10(i));
+            String formatted = String.format("%0"+ Integer.toString(2 - num) + "d", 0);
+            String p = path + formatted + Integer.toString(i) + ".dcm";
+            ImagePlus ip = IJ.openImage(p);
+            new StackConverter(ip).convertToGray8();
+            images[count++] = ip;
+        }
+
+        ImagePlus imp =  (new Concatenator()).concatenate(images, true);
 
 
 
 //        Prefs.getImagesURL() + "organ-of-corti.zip"
-        ImagePlus imp = IJ.openImage("C:\\TransMRIData\\0050000021\\result\\dicom\\001.dcm");
-        new StackConverter(imp).convertToGray8();
+//        ImagePlus imp = IJ.openImage("C:\\Users\\TransMRI\\Desktop\\AVM_case2_01res\\dicom\\ttp.dcm");
+//        new StackConverter(imp).convertToGray8();
 //        imp.show();
         // Create a universe and show it
         Image3DUniverse univ = new Image3DUniverse();
@@ -73,8 +73,12 @@ public class myMain {
         c.setLUT(r,g,b,intArray);
 
 
-        univ.setInteractiveBehavior(new CustomBehavior(univ, c));
 
+        univ.setInteractiveBehavior(new CustomBehavior(univ, c));
+//        ImagePlus snap = univ.takeSnapshot();
+//        snap.show();
+//        FileSaver fileSaver = new FileSaver(snap);
+//        fileSaver.saveAsPng();
         Timeline tl = univ.getTimeline();
         tl.setBounceBack(false);
 //        tl.play();

@@ -22,6 +22,9 @@
 
 package view4d;
 
+import ij.ImagePlus;
+import ij.io.FileSaver;
+
 import java.awt.Adjustable;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -254,7 +257,10 @@ public class TimelineGUI implements ActionListener, KeyListener {
 			timeline.pause();
 		}
 		else if (command.equals("RECORD")) {
-			timeline.record().show();
+			ImagePlus movie = timeline.record();
+			movie.show();
+			FileSaver fileSaver = new FileSaver(movie);
+			fileSaver.saveAsTiff();
 		}
 		else if (command.equals("FIRST")) {
 			timeline.first();

@@ -60,39 +60,39 @@ public class ContextMenu implements ActionListener, ItemListener,
 
 		slices = new JMenuItem("Adjust slices");
 		slices.addActionListener(this);
-		popup.add(slices);
+//		popup.add(slices);
 
 		updateVol = new JMenuItem("Update Volume");
 		updateVol.addActionListener(this);
-		popup.add(updateVol);
+//		popup.add(updateVol);
 
 		fill = new JMenuItem("Fill selection");
 		fill.addActionListener(this);
-		popup.add(fill);
+//		popup.add(fill);
 
 		final JMenu smooth = new JMenu("Smooth");
-		popup.add(smooth);
+//		popup.add(smooth);
 
 		smoothMesh = new JMenuItem("Smooth mesh");
 		smoothMesh.addActionListener(this);
-		smooth.add(smoothMesh);
+//		smooth.add(smoothMesh);
 
 		smoothAllMeshes = new JMenuItem("Smooth all meshes");
 		smoothAllMeshes.addActionListener(this);
-		smooth.add(smoothAllMeshes);
+//		smooth.add(smoothAllMeshes);
 
 		decimateMesh = new JMenuItem("Decimate mesh");
 		decimateMesh.addActionListener(this);
-		popup.add(decimateMesh);
+//		popup.add(decimateMesh);
 
 		smoothDialog = new JMenuItem("Smooth control");
 		smoothDialog.addActionListener(this);
-		smooth.add(smoothDialog);
+//		smooth.add(smoothDialog);
 
 		shaded = new JCheckBoxMenuItem("Shade surface");
 		shaded.setState(true);
 		shaded.addItemListener(this);
-		popup.add(shaded);
+//		popup.add(shaded);
 
 		saturated = new JCheckBoxMenuItem("Saturated volume rendering");
 		saturated.setState(false);
@@ -101,7 +101,7 @@ public class ContextMenu implements ActionListener, ItemListener,
 
 		colorSurface = new JMenuItem("Color surface from image");
 		colorSurface.addActionListener(this);
-		popup.add(colorSurface);
+//		popup.add(colorSurface);
 
 	}
 

@@ -51,6 +51,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.swing.JFileChooser;
 
+import ij.io.FileSaver;
 import org.scijava.java3d.Background;
 import org.scijava.java3d.PointLight;
 import org.scijava.java3d.Transform3D;
@@ -1459,6 +1460,8 @@ public class Executer {
 			public void run() {
 				final ImagePlus movie = univ.record360();
 				if (movie != null) movie.show();
+				FileSaver fileSaver = new FileSaver(movie);
+        		fileSaver.saveAsTiff();
 				record(RECORD_360);
 			}
 		}.start();
@@ -1472,6 +1475,8 @@ public class Executer {
 	public void stopFreehandRecording() {
 		final ImagePlus movie = univ.stopFreehandRecording();
 		if (movie != null) movie.show();
+		FileSaver fileSaver = new FileSaver(movie);
+		fileSaver.saveAsTiff();
 		record(STOP_FREEHAND_RECORDING);
 	}
 
@@ -1529,25 +1534,30 @@ public class Executer {
 	public void snapshot() {
 		int w = univ.getCanvas().getWidth();
 		int h = univ.getCanvas().getHeight();
+//
+//		final GenericDialog gd = new GenericDialog("Snapshot", univ.getWindow());
+//		gd.addNumericField("Target_width", w, 0);
+//		gd.addNumericField("Target_height", h, 0);
+//		gd.showDialog();
+//		if (gd.wasCanceled()) return;
+//		w = (int) gd.getNextNumber();
+//		h = (int) gd.getNextNumber();
+//
+//		final Map props = univ.getCanvas().queryProperties();
+//		final int maxW = (Integer) props.get("textureWidthMax");
+//		final int maxH = (Integer) props.get("textureHeightMax");
+//
+//		if (w < 0 || w >= maxW || h < 0 || h >= maxH) {
+//			IJ.error("Width must be between 0 and " + maxW +
+//				",\nheight between 0 and " + maxH);
+//			return;
+//		}
+//		univ.takeSnapshot(w, h).show();
+		ImagePlus snap = univ.takeSnapshot();
+		snap.show();
+		FileSaver fileSaver = new FileSaver(snap);
+        fileSaver.saveAsPng();
 
-		final GenericDialog gd = new GenericDialog("Snapshot", univ.getWindow());
-		gd.addNumericField("Target_width", w, 0);
-		gd.addNumericField("Target_height", h, 0);
-		gd.showDialog();
-		if (gd.wasCanceled()) return;
-		w = (int) gd.getNextNumber();
-		h = (int) gd.getNextNumber();
-
-		final Map props = univ.getCanvas().queryProperties();
-		final int maxW = (Integer) props.get("textureWidthMax");
-		final int maxH = (Integer) props.get("textureHeightMax");
-
-		if (w < 0 || w >= maxW || h < 0 || h >= maxH) {
-			IJ.error("Width must be between 0 and " + maxW +
-				",\nheight between 0 and " + maxH);
-			return;
-		}
-		univ.takeSnapshot(w, h).show();
 		record(SNAPSHOT, Integer.toString(w), Integer.toString(h));
 	}
 
