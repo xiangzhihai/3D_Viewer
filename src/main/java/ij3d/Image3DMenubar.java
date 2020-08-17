@@ -248,8 +248,8 @@ public class Image3DMenubar extends JMenuBar implements ActionListener,
 
 	public JMenu createEditMenu() {
 		final JMenu edit = new JMenu("Edit");
-
-		edit.add(createDisplayAsSubMenu());
+		createDisplayAsSubMenu();
+		//edit.add(createDisplayAsSubMenu());
 		// TODO:
 		selectMenu = createSelectMenu();
 //		edit.add(selectMenu);
@@ -262,11 +262,11 @@ public class Image3DMenubar extends JMenuBar implements ActionListener,
 
 		channels = new JMenuItem("Change channels");
 		channels.addActionListener(this);
-		edit.add(channels);
+		//edit.add(channels);
 
 		color = new JMenuItem("Change color");
 		color.addActionListener(this);
-		edit.add(color);
+		//edit.add(color);
 
 		transparency = new JMenuItem("Change transparency");
 		transparency.addActionListener(this);
@@ -281,7 +281,7 @@ public class Image3DMenubar extends JMenuBar implements ActionListener,
 		show = new JCheckBoxMenuItem("Show content");
 		show.setState(true);
 		show.addItemListener(this);
-		edit.add(show);
+		//edit.add(show);
 
 		coordinateSystem = new JCheckBoxMenuItem("Show coordinate system", true);
 		coordinateSystem.addItemListener(this);
@@ -294,7 +294,7 @@ public class Image3DMenubar extends JMenuBar implements ActionListener,
 		allCoordinateSystems =
 			new JCheckBoxMenuItem("Show all coordinate systems", true);
 		allCoordinateSystems.addItemListener(this);
-		edit.add(allCoordinateSystems);
+		//edit.add(allCoordinateSystems);
 
 		edit.addSeparator();
 
@@ -417,7 +417,7 @@ public class Image3DMenubar extends JMenuBar implements ActionListener,
 		centerUniverse = new JMenuItem("Universe");
 		centerUniverse.addActionListener(this);
 		menu.add(centerUniverse);
-		view.add(menu);
+		//view.add(menu);
 
 		// fit view submenu
 		menu = new JMenu("Fit view to");
@@ -428,7 +428,7 @@ public class Image3DMenubar extends JMenuBar implements ActionListener,
 		fitViewToContent = new JMenuItem("Selected content");
 		fitViewToContent.addActionListener(this);
 		menu.add(fitViewToContent);
-		view.add(menu);
+		//view.add(menu);
 
 		menu = new JMenu("Set view");
 		viewposXY = new JMenuItem("+ XY");
@@ -489,19 +489,19 @@ public class Image3DMenubar extends JMenuBar implements ActionListener,
 
 		sync = new JCheckBoxMenuItem("Sync view");
 		sync.addItemListener(this);
-		view.add(sync);
+		//view.add(sync);
 
 		view.addSeparator();
 
 		scalebar = new JMenuItem("Edit Scalebar");
 		scalebar.addActionListener(this);
-		view.add(scalebar);
+		//view.add(scalebar);
 
 		view.addSeparator();
 
 		light = new JMenuItem("Adjust light");
 		light.addActionListener(this);
-		view.add(light);
+		//view.add(light);
 
 		bgColor = new JMenuItem("Change background color");
 		bgColor.addActionListener(this);

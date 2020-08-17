@@ -35,7 +35,7 @@ import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.lang.reflect.Method;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import org.scijava.java3d.Canvas3D;
 import org.scijava.java3d.GraphicsConfigTemplate3D;
@@ -79,10 +79,16 @@ public class ImageWindow3D extends JFrame implements UniverseListener {
 
 			@Override
 			public void windowClosing(final WindowEvent e) {
-				close();
+				if (JOptionPane.showConfirmDialog(null,
+						"Are you sure you want to close this window?", "Close Window?",
+						JOptionPane.YES_NO_OPTION,
+						JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+					close();
+				}
+
 			}
 		});
-
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		universe.addUniverseListener(this);
 		updateImagePlus();
 		universe.ui.setHandTool();
